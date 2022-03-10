@@ -1,0 +1,15 @@
+.navbar {
+    background-color: rgb(27, 126, 207);
+}
+.navbar-toggler{
+    background-color: rgb(50, 180, 89);
+}
+
+.title {
+    color: white;
+    text-decoration: none;
+}
+
+:active{
+    color: black;
+}
