@@ -10,6 +10,6 @@ import { Pokemon } from "./pokemon";
 export class Pokemon2Service extends CrudService<Pokemon>{
 
     constructor(protected override http: HttpClient){
-        super(http, `${environment.API}pokedex`)
+        super(http, `${environment.API}pokemon`)
     }
 }

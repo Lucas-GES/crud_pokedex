@@ -9,12 +9,12 @@ import { Pokemon } from "./pokemon";
 })
 export class PokemonsService{
 
-    private readonly API = `${environment.API}pokedex`;
+    private readonly API = `${environment.API}pokemon`;
 
     constructor(private http: HttpClient){}
 
     list(){
-        return this.http.get<Pokemon[]>(this.API)
+        return this.http.get<Pokemon[]>(`${this.API}/all`)
             .pipe(
                 delay(2000),
                 tap(console.log)

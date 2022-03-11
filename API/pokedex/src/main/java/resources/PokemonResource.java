@@ -17,7 +17,7 @@ public class PokemonResource {
     @Autowired
     private PokemonService service;
 
-    @GetMapping(path="/all")
+    @GetMapping
     public ResponseEntity<List<Pokemon>> findAll(){
         List<Pokemon> list = service.findAll();
         return ResponseEntity.ok().body(list);
