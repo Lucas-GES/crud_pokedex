@@ -1,1 +1,21 @@
-<p>pokemons-edit works!</p>
+<form class="need-validation" novalidate [formGroup]="form" style="padding-top: 10px;">
+    <div class="form-row">
+        <div class="col-md4 mb-3">
+            <img src="img" class="card-img-top" alt="...">
+            <input type="text" class="form-control" 
+            id="nome" placeholder="Pokemon Name" 
+            formControlName="nome">
+            <input type="text" class="form-control" 
+            id="tipo" placeholder="Pokemon Type" 
+            formControlName="tipo">    
+            <input type="text" class="form-control" 
+            id="iv" placeholder="Pokemon IV" 
+            formControlName="iv">       
+            
+        </div>
+    </div>
+    <div style="margin-top: 10px">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-default">Cancelar</button>
+    </div>
+</form>

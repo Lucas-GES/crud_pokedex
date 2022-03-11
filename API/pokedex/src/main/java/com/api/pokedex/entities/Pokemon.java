@@ -13,6 +13,7 @@ public class Pokemon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String img;
     private String Nome;
     private String tipo;
     private Double iv;
@@ -24,8 +25,9 @@ public class Pokemon implements Serializable {
     public Pokemon() {
     }
 
-    public Pokemon(Long id, String name, String tipo, Double iv) {
+    public Pokemon(Long id, String img, String name, String tipo, Double iv) {
         this.id = id;
+        this.img = img;
         this.Nome = name;
         this.tipo = tipo;
         this.iv = iv;
@@ -69,6 +71,14 @@ public class Pokemon implements Serializable {
 
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     @Override
