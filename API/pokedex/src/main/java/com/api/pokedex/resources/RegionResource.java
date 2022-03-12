@@ -1,11 +1,11 @@
-package resources;
+package com.api.pokedex.resources;
 
 import com.api.pokedex.entities.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import services.RegionService;
+import com.api.pokedex.services.RegionService;
 
 import java.net.URI;
 import java.util.List;

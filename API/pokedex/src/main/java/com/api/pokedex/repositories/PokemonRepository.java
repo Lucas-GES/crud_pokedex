@@ -1,4 +1,4 @@
-package repositories;
+package com.api.pokedex.repositories;
 
 import com.api.pokedex.entities.Pokemon;
 import org.springframework.data.jpa.repository.JpaRepository;

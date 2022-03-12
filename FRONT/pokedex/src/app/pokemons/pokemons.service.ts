@@ -14,7 +14,7 @@ export class PokemonsService{
     constructor(private http: HttpClient){}
 
     list(){
-        return this.http.get<Pokemon[]>(`${this.API}/all`)
+        return this.http.get<Pokemon[]>(this.API)
             .pipe(
                 delay(2000),
                 tap(console.log)

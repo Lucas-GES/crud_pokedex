@@ -1,4 +1,4 @@
-package repositories;
+package com.api.pokedex.repositories;
 
 import com.api.pokedex.entities.Region;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import repositories.PokemonRepository;
-import repositories.RegionRepository;
+import com.api.pokedex.repositories.PokemonRepository;
+import com.api.pokedex.repositories.RegionRepository;
 
 @Configuration
 @Profile("dev")
 public class Program implements CommandLineRunner {
 
-    @Autowired
+
     private PokemonRepository pokemonRepository;
 
-    @Autowired
+
     private RegionRepository regionRepository;
 
     @Override
@@ -26,7 +26,7 @@ public class Program implements CommandLineRunner {
 //        pokemon1.setRegion(regionRepository.getById(2));
 //        pokemonRepository.save(pokemon1);
 //        System.out.println("Saved");
-        System.out.println(pokemonRepository.findById(1L).map(x -> x.getName()));
+        //System.out.println(pokemonRepository.findById(1L).map(x -> x.getName()));
 
     }
 

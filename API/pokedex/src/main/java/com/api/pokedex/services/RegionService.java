@@ -1,34 +1,34 @@
-package services;
+package com.api.pokedex.services;
 
-import com.api.pokedex.entities.Pokemon;
+import com.api.pokedex.entities.Region;
+import com.api.pokedex.repositories.RegionRepository;
+import com.api.pokedex.services.exceptions.DatabaseException;
+import com.api.pokedex.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-import repositories.PokemonRepository;
-import services.exceptions.DatabaseException;
-import services.exceptions.ResourceNotFoundException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PokemonService {
+public class RegionService {
 
     @Autowired
-    private PokemonRepository repository;
+    private RegionRepository repository;
 
-    public List<Pokemon> findAll(){
+    public List<Region> findAll(){
         return repository.findAll();
     }
 
-    public Pokemon findById(Long id){
-        Optional<Pokemon> obj = repository.findById(id);
+    public Region findById(Long id){
+        Optional<Region> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public Pokemon insert(Pokemon obj){
+    public Region insert(Region obj){
         return repository.save(obj);
     }
 
@@ -42,9 +42,9 @@ public class PokemonService {
         }
     }
 
-    public Pokemon update(Long id, Pokemon obj){
+    public Region update(Long id, Region obj){
         try{
-            Pokemon entity = repository.getById(id);
+            Region entity = repository.getById(id);
             updateData(entity, obj);
             return repository.save(entity);
         }catch (EntityNotFoundException e){
@@ -52,12 +52,8 @@ public class PokemonService {
         }
     }
 
-    private void updateData(Pokemon entity, Pokemon obj) {
-        entity.setImg(obj.getImg());
+    private void updateData(Region entity, Region obj) {
         entity.setName(obj.getName());
-        entity.setTipo(obj.getTipo());
-        entity.setIv(obj.getIv());
-        entity.setRegion(obj.getRegion());
     }
 
 }

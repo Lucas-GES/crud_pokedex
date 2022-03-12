@@ -1,34 +1,38 @@
-package services;
+package com.api.pokedex.services;
 
-import com.api.pokedex.entities.Region;
+import com.api.pokedex.entities.Pokemon;
+import com.api.pokedex.repositories.PokemonRepository;
+import com.api.pokedex.services.exceptions.DatabaseException;
+import com.api.pokedex.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-import repositories.RegionRepository;
-import services.exceptions.DatabaseException;
-import services.exceptions.ResourceNotFoundException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RegionService {
+public class PokemonService {
 
     @Autowired
-    private RegionRepository repository;
+    private PokemonRepository repository;
 
-    public List<Region> findAll(){
+    public List<Pokemon> findAll(){
         return repository.findAll();
     }
 
-    public Region findById(Long id){
-        Optional<Region> obj = repository.findById(id);
+    public String getHello(){
+        return "Hello";
+    }
+
+    public Pokemon findById(Long id){
+        Optional<Pokemon> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public Region insert(Region obj){
+    public Pokemon insert(Pokemon obj){
         return repository.save(obj);
     }
 
@@ -42,9 +46,9 @@ public class RegionService {
         }
     }
 
-    public Region update(Long id, Region obj){
+    public Pokemon update(Long id, Pokemon obj){
         try{
-            Region entity = repository.getById(id);
+            Pokemon entity = repository.getById(id);
             updateData(entity, obj);
             return repository.save(entity);
         }catch (EntityNotFoundException e){
@@ -52,8 +56,12 @@ public class RegionService {
         }
     }
 
-    private void updateData(Region entity, Region obj) {
+    private void updateData(Pokemon entity, Pokemon obj) {
+        entity.setImg(obj.getImg());
         entity.setName(obj.getName());
+        entity.setTipo(obj.getTipo());
+        entity.setIv(obj.getIv());
+        entity.setRegion(obj.getRegion());
     }
 
 }
