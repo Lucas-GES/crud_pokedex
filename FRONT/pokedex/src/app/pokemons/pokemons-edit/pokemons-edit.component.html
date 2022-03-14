@@ -1,21 +1,22 @@
 <form class="need-validation" novalidate [formGroup]="form" style="padding-top: 10px;">
     <div class="form-row">
         <div class="col-md4 mb-3">
-            <img src="img" class="card-img-top" alt="...">
-            <input type="text" class="form-control" 
-            id="nome" placeholder="Pokemon Name" 
-            formControlName="nome">
-            <input type="text" class="form-control" 
-            id="tipo" placeholder="Pokemon Type" 
-            formControlName="tipo">    
-            <input type="text" class="form-control" 
-            id="iv" placeholder="Pokemon IV" 
-            formControlName="iv">       
-            
+            <input type="number" class="form-control" id="id" formControlName="id" readonly>
+            <label for="img">Pokemon IMG URL</label>
+            <input type="text" class="form-control" id="img" placeholder="Img URL" formControlName="img">
+            <label for="name">Pokemon Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Pokemon Name" formControlName="name">
+            <label for="tipo">Pokemon Type</label>
+            <input type="text" class="form-control" id="tipo" placeholder="Pokemon Type" formControlName="tipo">
+            <label for="iv">Pokemon IV</label>
+            <input type="text" class="form-control" id="iv" placeholder="Pokemon IV" formControlName="iv">
+            <label for="region_id">Region ID</label>
+            <input type="text" class="form-control" id="region_id" placeholder="Region ID" formControlName="region_id">
+
         </div>
     </div>
     <div style="margin-top: 10px">
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
         <button type="button" class="btn btn-default">Cancelar</button>
     </div>
 </form>

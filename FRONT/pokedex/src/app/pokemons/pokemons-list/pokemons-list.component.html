@@ -6,7 +6,7 @@
         <div class="card" *ngFor="let pokemon of pokemons$ | async">
             <img src="{{ pokemon.img }}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">{{ pokemon.nome }}</h5>
+                <h5 class="card-title">{{ pokemon.name }}</h5>
                 <p class="card-text">ID: {{ pokemon.id }}</p>
                 <p class="card-text">Tipo: {{ pokemon.tipo }}</p>
                 <p class="card-text">IV: {{ pokemon.iv }}</p>

@@ -1,7 +1,8 @@
 export interface Pokemon{
-    img: string
+    img: string;
     id: number;
-    nome: string;
+    name: string;
     tipo: string;
     iv: number;
+    region_id: number;
 }

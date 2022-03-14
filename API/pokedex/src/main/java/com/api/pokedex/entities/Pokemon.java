@@ -18,8 +18,8 @@ public class Pokemon implements Serializable {
     private String tipo;
     private Double iv;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "region_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "region_id", nullable = true)
     private Region region;
 
     public Pokemon() {
