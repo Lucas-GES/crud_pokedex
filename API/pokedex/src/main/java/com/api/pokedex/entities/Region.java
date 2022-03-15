@@ -7,9 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "region")
-public class Region implements Serializable {
-
-    private static final long SerialVersionUID = 1L;
+public class Region{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -6,9 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "pokemon")
-public class Pokemon implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Pokemon{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
