@@ -1,1 +1,13 @@
-<p>regions-edit works!</p>
+<form novalidate [formGroup]="form" style="padding-top: 10px;">
+    <div class="form-row">
+        <div class="col-md4 mb-3">
+            <input type="number" class="form-control" id="id" formControlName="id" readonly>
+            <label for="name">Region Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Region Name" formControlName="name">
+        </div>
+    </div>
+    <div style="margin-top: 10px">
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+        <button type="button" class="btn btn-default" (click)="onCancel()">Cancelar</button>
+    </div>
+</form>

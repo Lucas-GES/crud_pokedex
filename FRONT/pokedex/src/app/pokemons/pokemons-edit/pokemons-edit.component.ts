@@ -25,21 +25,22 @@ export class PokemonsEditComponent implements OnInit {
 
     const pokemon = this.route.snapshot.data['pokemon'];
 
-    
     this.form = this.fb.group({
-      img: [pokemon.img], 
-      id: [pokemon.id],           
+      img: [pokemon.img],
+      id: [pokemon.id],
       name: [pokemon.name],
       tipo: [pokemon.tipo],
       iv: [pokemon.iv],
-      region_id: [pokemon.region.id]
-    })
+      region_id: [pokemon.region]
+    }
+      
+    )
 
   }
 
   onSubmit(){
     this.submitted = true;
-    if(this.form.valid){
+    if(this.form?.valid){
       console.log('submit');
       console.log(this.form.value);
       this.service.save(this.form.value).subscribe({
@@ -47,7 +48,7 @@ export class PokemonsEditComponent implements OnInit {
           console.log('success');
           this.location.back();
         },
-        error: () => {console.log(this.form.value)}
+        error: () => {console.log(this.form?.value)}
 
       });
 
@@ -56,7 +57,7 @@ export class PokemonsEditComponent implements OnInit {
 
   onCancel(){
     this.submitted = false;
-    this.form.reset();
+    this.form?.reset();
   }
 
 }

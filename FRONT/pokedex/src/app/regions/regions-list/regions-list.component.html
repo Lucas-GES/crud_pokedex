@@ -1,1 +1,19 @@
-<p>regions-list works!</p>
+<div style="margin-top: 10px;">
+    <div class="float-right" style="margin-bottom: 10px;">
+        <button type="button" class="btn btn-primary" [routerLink]="['novo']">New Region</button>
+    </div>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="card" *ngFor="let region of regions$ | async">
+            <div class="card-body">                
+                <p class="card-text">ID: {{ region.id }}</p>
+                <h5 class="card-title">{{ region.name }}</h5>                
+                <button class="btn btn-outline-warning mb-1 btn-sm" style="margin-right: 5px;" (click)="editar(region.id)">
+                    Atualizar
+                </button>
+                <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(region)">
+                    Remover
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

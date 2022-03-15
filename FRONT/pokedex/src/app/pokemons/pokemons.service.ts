@@ -15,8 +15,7 @@ export class PokemonsService{
 
     list(){
         return this.http.get<Pokemon[]>(this.API)
-            .pipe(
-                delay(2000),
+            .pipe(                
                 tap(console.log)
             );
     }

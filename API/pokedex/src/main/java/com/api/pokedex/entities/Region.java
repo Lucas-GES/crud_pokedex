@@ -13,7 +13,7 @@ public class Region implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String Nome;
 
     @OneToMany(mappedBy = "region", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -22,16 +22,16 @@ public class Region implements Serializable {
     public Region() {
     }
 
-    public Region(int id, String name) {
+    public Region(Long id, String name) {
         this.id = id;
         this.Nome = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

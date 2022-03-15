@@ -17,12 +17,12 @@ export class PokemonResolverGuard implements Resolve<Pokemon>{
         }
 
         return of({
-            img: null, 
-            id: null,           
+            img: null,
+            id: null,          
             nome: null,
             tipo: null,
             iv: null,
-            region_id: null
+            region: null
         })
     }
     

@@ -10,7 +10,7 @@ const routes: Routes = [
         path: 'novo', component: PokemonsEditComponent,
         resolve: {
             pokemon: PokemonResolverGuard
-        }
+        } 
     },
     {
         path: 'editar/:id', component: PokemonsEditComponent,

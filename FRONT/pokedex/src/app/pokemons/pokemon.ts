@@ -4,5 +4,5 @@ export interface Pokemon{
     name: string;
     tipo: string;
     iv: number;
-    region_id: number;
+    region: number;
 }
