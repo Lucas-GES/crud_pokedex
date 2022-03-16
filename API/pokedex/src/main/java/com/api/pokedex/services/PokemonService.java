@@ -16,15 +16,15 @@ import java.util.Optional;
 @Service
 public class PokemonService {
 
-    @Autowired
     private PokemonRepository repository;
+
+    @Autowired
+    public PokemonService(PokemonRepository pokemonRepository){
+        this.repository = pokemonRepository;
+    }
 
     public List<Pokemon> findAll(){
         return repository.findAll();
-    }
-
-    public String getHello(){
-        return "Hello";
     }
 
     public Pokemon findById(Long id){

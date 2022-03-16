@@ -1,6 +1,7 @@
 package com.api.pokedex.resources;
 
 import com.api.pokedex.entities.Pokemon;
+import com.api.pokedex.services.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,8 @@ public class PokemonResource {
 
     @Autowired
     private PokemonService service;
+    @Autowired
+    private RegionService regionService;
 
     @GetMapping
     public ResponseEntity<List<Pokemon>> findAll(){

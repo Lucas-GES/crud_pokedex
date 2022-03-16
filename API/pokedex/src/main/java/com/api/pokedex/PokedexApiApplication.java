@@ -2,10 +2,8 @@ package com.api.pokedex;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = {"com/api/pokedex/repositories"})
 public class PokedexApiApplication {
 
 	public static void main(String[] args) {

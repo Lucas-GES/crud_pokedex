@@ -16,8 +16,8 @@ public class Pokemon{
     private String tipo;
     private Double iv;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "region_id", nullable = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id")
     private Region region;
 
     public Pokemon() {
