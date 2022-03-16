@@ -16,8 +16,13 @@ import java.util.Optional;
 @Service
 public class RegionService {
 
-    @Autowired
+
     private RegionRepository repository;
+
+    @Autowired
+    public RegionService(RegionRepository regionRepository){
+        this.repository = regionRepository;
+    }
 
     public List<Region> findAll(){
         return repository.findAll();

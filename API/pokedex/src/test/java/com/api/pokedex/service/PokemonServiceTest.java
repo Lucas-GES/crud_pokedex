@@ -7,7 +7,6 @@ import com.api.pokedex.services.exceptions.ResourceNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -16,8 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -28,14 +26,18 @@ public class PokemonServiceTest {
 
     @Test
     public void testInsertPokemon(){
-        Pokemon pokemon = new Pokemon(null, "test1", "test", "test", 0.0);
+        PokemonService pokemonService = new PokemonService(pokemonRepository);
+        Pokemon pokemon = new Pokemon(null, "img", "test", "test", 0.0);
         pokemonRepository.save(pokemon);
+        int countService = pokemonService.findAll().size();
         int count = pokemonRepository.findAll().size();
-        assertEquals(1, count);
+        assertEquals(countService, count);
     }
 
     @Test
     public void testNotFindId(){
+        Pokemon pokemon = new Pokemon(null, "img", "test", "test", 0.0);
+        pokemonRepository.save(pokemon);
         PokemonService pokemonService = new PokemonService(pokemonRepository);
         assertThrows(ResourceNotFoundException.class, () -> pokemonService.findById(99L));
     }
@@ -43,9 +45,9 @@ public class PokemonServiceTest {
     @Test
     public void testFindId(){
         PokemonService pokemonService = new PokemonService(pokemonRepository);
-        pokemonRepository.save(new Pokemon(null, "img", "test", "tipo", 0.0));
-        Optional<Pokemon> id = pokemonRepository.findById(1L);
-        Optional<Pokemon> resultId = Optional.ofNullable(pokemonService.findById(1L));
+        Pokemon p1 = pokemonRepository.save(new Pokemon(null, "img", "test", "tipo", 0.0));
+        Optional<Pokemon> id = pokemonRepository.findById(p1.getId());
+        Optional<Pokemon> resultId = Optional.ofNullable(pokemonService.findById(p1.getId()));
 
         assertEquals(id, resultId);
     }
@@ -66,8 +68,10 @@ public class PokemonServiceTest {
     public void testDeletePokemon(){
         PokemonService pokemonService = new PokemonService(pokemonRepository);
         pokemonRepository.save(new Pokemon(null, "img", "test", "tipo", 0.0));
+        int fullSizeDB = pokemonService.findAll().size();
         pokemonService.delete(1L);
-        assertEquals(0, pokemonService.findAll().size());
+        int sizeAfterDeletion = pokemonService.findAll().size();
+        assertNotEquals(sizeAfterDeletion, fullSizeDB);
     }
 
     @Test
