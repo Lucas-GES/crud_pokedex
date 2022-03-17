@@ -17,8 +17,6 @@ public class PokemonResource {
 
     @Autowired
     private PokemonService service;
-    @Autowired
-    private RegionService regionService;
 
     @GetMapping
     public ResponseEntity<List<Pokemon>> findAll(){
@@ -29,6 +27,9 @@ public class PokemonResource {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Pokemon> findById(@PathVariable Long id){
         Pokemon obj = service.findById(id);
+        if(obj == null){
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok().body(obj);
     }
 

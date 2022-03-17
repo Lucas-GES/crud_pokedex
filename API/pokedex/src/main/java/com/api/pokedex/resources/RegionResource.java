@@ -27,6 +27,9 @@ public class RegionResource {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Region> findById(@PathVariable Long id){
         Region obj = service.findById(id);
+        if(obj == null){
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok().body(obj);
     }
 
