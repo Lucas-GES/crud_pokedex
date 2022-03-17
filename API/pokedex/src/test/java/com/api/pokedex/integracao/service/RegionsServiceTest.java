@@ -1,4 +1,4 @@
-package com.api.pokedex.service;
+package com.api.pokedex.integracao.service;
 
 import com.api.pokedex.entities.Region;
 import com.api.pokedex.repositories.RegionRepository;
