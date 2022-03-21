@@ -1,7 +1,7 @@
 package com.api.pokedex.resources;
 
 import com.api.pokedex.entities.Pokemon;
-import com.api.pokedex.services.RegionService;
+import com.api.pokedex.entities.Region;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +21,12 @@ public class PokemonResource {
     @GetMapping
     public ResponseEntity<List<Pokemon>> findAll(){
         List<Pokemon> list = service.findAll();
+        return ResponseEntity.ok().body(list);
+    }
+
+    @GetMapping(value = "/region/{id}")
+    public ResponseEntity<List<Pokemon>> findByRegionId(@PathVariable Region id){
+        List<Pokemon> list = service.findByRegionId(id);
         return ResponseEntity.ok().body(list);
     }
 

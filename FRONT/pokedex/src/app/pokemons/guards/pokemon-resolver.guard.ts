@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
 import { Observable, of } from "rxjs";
-import { Pokemon } from "./pokemon";
-import { PokemonsService } from "./pokemons.service";
+import { Pokemon } from "../pokemon";
+import { PokemonsService } from "../pokemons.service";
 
 @Injectable({
     providedIn: 'root'

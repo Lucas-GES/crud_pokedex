@@ -1,5 +1,6 @@
 package com.api.pokedex.unitario;
 import com.api.pokedex.entities.Pokemon;
+import com.api.pokedex.entities.Region;
 import com.api.pokedex.repositories.PokemonRepository;
 import com.api.pokedex.services.PokemonService;
 import com.api.pokedex.services.exceptions.ResourceNotFoundException;
@@ -50,7 +51,7 @@ public class PokemonServiceTest{
     @Test
     @DisplayName("Should find pokemon by id")
     public void findByIdTest(){
-        Optional<Pokemon> pokemon = Optional.of(new Pokemon(1L, "img", "test", "tipo", 0.0));
+        Optional<Pokemon> pokemon = Optional.of(new Pokemon(1L, "img", "test", "tipo", 0.0, new Region()));
         when(pokemonRepository.findById(1L)).thenReturn(pokemon);
         Optional<Pokemon> result = Optional.ofNullable(pokemonService.findById(1L));
 

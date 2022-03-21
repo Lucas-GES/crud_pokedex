@@ -1,6 +1,7 @@
 package com.api.pokedex.services;
 
 import com.api.pokedex.entities.Pokemon;
+import com.api.pokedex.entities.Region;
 import com.api.pokedex.repositories.PokemonRepository;
 import com.api.pokedex.services.exceptions.DatabaseException;
 import com.api.pokedex.services.exceptions.ResourceNotFoundException;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PokemonService {
@@ -30,6 +32,13 @@ public class PokemonService {
     public Pokemon findById(Long id){
         Optional<Pokemon> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ResourceNotFoundException(id));
+    }
+
+    public List<Pokemon> findByRegionId(Region id){
+        return repository.findAll()
+                .stream()
+                .filter(pokemon -> pokemon.getRegion().getId() == id.getId())
+                .collect(Collectors.toList());
     }
 
     public Pokemon insert(Pokemon obj){

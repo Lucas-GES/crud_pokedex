@@ -1,7 +1,6 @@
 package com.api.pokedex.entities;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
@@ -23,12 +22,13 @@ public class Pokemon{
     public Pokemon() {
     }
 
-    public Pokemon(Long id, String img, String name, String tipo, Double iv) {
+    public Pokemon(Long id, String img, String name, String tipo, Double iv, Region region) {
         this.id = id;
         this.img = img;
         this.Nome = name;
         this.tipo = tipo;
         this.iv = iv;
+        this.region = region;
     }
 
     public Long getId() {

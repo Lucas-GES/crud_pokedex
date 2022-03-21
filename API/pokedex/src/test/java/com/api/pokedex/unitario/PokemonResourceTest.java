@@ -1,6 +1,7 @@
 package com.api.pokedex.unitario;
 
 import com.api.pokedex.entities.Pokemon;
+import com.api.pokedex.entities.Region;
 import com.api.pokedex.resources.PokemonResource;
 import com.api.pokedex.services.PokemonService;
 import io.restassured.http.ContentType;
@@ -38,9 +39,9 @@ public class PokemonResourceTest {
     @DisplayName("Should find all pokemon")
     public void findAllTest(){
         List<Pokemon> pokemonList = new ArrayList<>();
-        pokemonList.add(new Pokemon(null, "img", "test", "tipo", 0.0));
-        pokemonList.add(new Pokemon(null, "img", "test1", "tipo", 0.0));
-        pokemonList.add(new Pokemon(null, "img", "test2", "tipo", 0.0));
+        pokemonList.add(new Pokemon(null, "img", "test", "tipo", 0.0, new Region()));
+        pokemonList.add(new Pokemon(null, "img", "test1", "tipo", 0.0, new Region()));
+        pokemonList.add(new Pokemon(null, "img", "test2", "tipo", 0.0, new Region()));
 
         when(service.findAll()).thenReturn(pokemonList);
 
@@ -57,7 +58,7 @@ public class PokemonResourceTest {
     @DisplayName("Should find a pokemon by id")
     public void findByIdTest(){
         when(this.service.findById(1L))
-                .thenReturn(new Pokemon(1L, "img", "test", "tipo", 0.0));
+                .thenReturn(new Pokemon(1L, "img", "test", "tipo", 0.0, new Region()));
 
         given()
                 .accept(ContentType.JSON)
@@ -84,7 +85,7 @@ public class PokemonResourceTest {
     @Test
     @DisplayName("Should give error when inserting a pokemon")
     public void notinsertTest(){
-        Pokemon p1 = new Pokemon(null, "img", "test", "tipo", 0.0);
+        Pokemon p1 = new Pokemon(null, "img", "test", "tipo", 0.0, new Region());
         when(this.service.insert(p1))
                 .thenReturn(null);
 

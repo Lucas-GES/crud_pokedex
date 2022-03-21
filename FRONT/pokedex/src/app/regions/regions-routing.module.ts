@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { RegionResolverGuard } from "./region-resolver.guard";
+import { RegionResolverGuard } from "./guards/region-resolver.guard";
 import { RegionsEditComponent } from "./regions-edit/regions-edit.component";
 import { RegionsListComponent } from "./regions-list/regions-list.component";
 
